@@ -28,7 +28,14 @@ public abstract class Creature {
     public abstract int[] getDamage();
 
     private int attackModCalc(int opponentDefense) {
-        return (attack - opponentDefense) + 1;
+        if (((attack - opponentDefense) + 1) <= 0) {
+            // критический успех
+            return 1;
+        }
+        else {
+            return (attack - opponentDefense) + 1;
+        }
+
     }
 
     public boolean isAttackSuccessful (int opponentDefense) {
@@ -42,5 +49,9 @@ public abstract class Creature {
        }
        return false;
     }
+
+//    public int Hit () {
+//
+//    }
 
 }

@@ -22,17 +22,23 @@ public class Main {
         //System.out.println(modifier);
 
 
-        // тест успешности броска
-        boolean isSuccessful = iAm.isAttackSuccessful(2);
-        System.out.println(isSuccessful);
+//        // тест успешности броска
+//        boolean isSuccessful = iAm.isAttackSuccessful(2);
+//        System.out.println(isSuccessful);
+//
+//
+//        //тест нанесения урона
+//        System.out.println(iAm.hit(isSuccessful));
+//
+//
+//        //тест получения урона
+//        iAm.getHit(7);
+//        System.out.println(iAm.getCurentHealth());
 
 
-        //тест нанесения урона
-        System.out.println(iAm.hit(isSuccessful));
-
-
-        //тест получения урона
-        iAm.getHit(7);
-        System.out.println(iAm.getCurentHealth());
+        //тест алгоритма атаки
+        int testingAttackAlgo = iAm.attackAlgorithm(2);
+        System.out.print("Dealt to monster damage: ");
+        System.out.println(testingAttackAlgo);
     }
 }

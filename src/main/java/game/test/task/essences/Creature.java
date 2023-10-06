@@ -50,8 +50,24 @@ public abstract class Creature {
        return false;
     }
 
-//    public int Hit () {
-//
-//    }
+    public int hit (boolean isSuccessful) {
+        if (isSuccessful) {
+            // взятие случайного числа из диапазона урона [x, y]
+            int dealtDamage = (int)(( Math.random() * (this.damage[1] - this.damage[0] + 1) + this.damage[0]));
+            return dealtDamage;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public void getHit(int opponentDamage) {
+        this.curentHealth = curentHealth - opponentDamage;
+    }
+
+//   public attackAlgorithm(int opponentDefense) {
+//        int modifier = attackModCalc(opponentDefense);
+//        boolean isSuccessful = isAttackSuccessful()
+//   }
 
 }

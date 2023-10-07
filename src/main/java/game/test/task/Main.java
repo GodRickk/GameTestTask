@@ -6,10 +6,10 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int[] damage = new int[2];
-        damage[0] = 8;
-        damage[1] = 11;
-        Player iAm = new Player(3, 4, 31, damage);
+        int[] playerDamage = new int[2];
+        playerDamage[0] = 8;
+        playerDamage[1] = 11;
+        Player iAm = new Player(3, 4, 31, playerDamage);
         System.out.print("Damage array: ");
 
         // [0, 0] вывод массива наносимого урона
@@ -37,8 +37,14 @@ public class Main {
 
 
         //тест алгоритма атаки
-        int testingAttackAlgo = iAm.attackAlgorithm(2);
-        System.out.print("Dealt to monster damage: ");
+        int[] monsterDamage = new int[2];
+        monsterDamage[0] = 1;
+        monsterDamage[1] = 2;
+
+        Monster garpy = new Monster(1, 1, 10, monsterDamage);
+
+        int testingAttackAlgo = iAm.attackAlgorithm(garpy);
+        System.out.print("Dealt to monster playerDamage: ");
         System.out.println(testingAttackAlgo);
     }
 }

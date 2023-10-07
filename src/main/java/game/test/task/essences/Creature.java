@@ -1,5 +1,6 @@
 package game.test.task.essences;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public abstract class Creature {
@@ -65,8 +66,24 @@ public abstract class Creature {
         this.curentHealth = curentHealth - opponentDamage;
     }
 
-   public int attackAlgorithm(int opponentDefense) {
-        int modifier = attackModCalc(opponentDefense);
+    public boolean isDead() {
+        return curentHealth == 0;
+    }
+
+//   public int attackAlgorithm(int opponentDefense) {
+//        int modifier = attackModCalc(opponentDefense);
+//        System.out.println(modifier);
+//
+//        boolean isSuccessful = isAttackSuccessful(modifier);
+//        System.out.println(isSuccessful);
+//
+//        int dealtDamage = hit(isSuccessful);
+//        System.out.println(dealtDamage);
+//        return dealtDamage;
+//   }
+
+    public int attackAlgorithm(Creature creature) {
+        int modifier = attackModCalc(creature.getDefense());
         System.out.println(modifier);
 
         boolean isSuccessful = isAttackSuccessful(modifier);
@@ -75,6 +92,6 @@ public abstract class Creature {
         int dealtDamage = hit(isSuccessful);
         System.out.println(dealtDamage);
         return dealtDamage;
-   }
+    }
 
 }

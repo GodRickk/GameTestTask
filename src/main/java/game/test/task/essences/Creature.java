@@ -13,11 +13,37 @@ public abstract class Creature {
     protected int[] damage = new int[2];
 
     public Creature(int attack, int defense, int maxHealth, int[] damage) {
-        this.attack = attack;
-        this.defense = defense;
-        this.maxHealth = maxHealth;
-        this.curentHealth = maxHealth;
-        this.damage = damage;
+        try {
+            if (attack < 1 || attack > 30) {
+                throw new IllegalArgumentException("Parameter 'attack' must be from range [1,30]");
+            }
+            this.attack = attack;
+
+            if (defense < 1 || defense > 30) {
+                throw new IllegalArgumentException("Parameter 'defense' must be from range [1,30]");
+            }
+            this.defense = defense;
+
+            if (maxHealth <=0 ) {
+                throw new IllegalArgumentException("Parameter 'maxHealth' must be from range natural number other than zero when created");
+            }
+            this.maxHealth = maxHealth;
+            this.curentHealth = maxHealth;
+
+            if (damage.length != 2) {
+                throw new IllegalArgumentException("Parameter 'damage' must be two numbers");
+            }
+            if ((damage[0] <= 0 || damage[1] <= 0)) {
+                throw new IllegalArgumentException("Parameter 'damage' must contains natural numbers");
+            }
+
+            this.damage[0] = damage[0];
+            this.damage[1] = damage[1];
+            Arrays.sort(this.damage);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
     }
 
     public abstract int getAttack();
@@ -81,6 +107,9 @@ public abstract class Creature {
         if (opponent == this) {
             throw new IllegalArgumentException("Wow, self-harm mechanic is not provided, and you are not Tyler Durden");
         }
+        if (opponent.getDefense() < 1 || opponent.getDefense() > 30) {
+            throw new IllegalArgumentException("Your opponent has wrong defense stat");
+        }
 
         int modifier = attackModCalc(opponent.getDefense());
         System.out.println(modifier);
@@ -97,6 +126,7 @@ public abstract class Creature {
 
         } catch (NullPointerException | IllegalArgumentException e) {
             System.out.println(e);
+            e.printStackTrace();
         }
 
         return dealtDamage;

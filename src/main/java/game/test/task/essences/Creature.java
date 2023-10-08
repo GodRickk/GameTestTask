@@ -1,5 +1,6 @@
 package game.test.task.essences;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public abstract class Creature {
@@ -38,8 +39,7 @@ public abstract class Creature {
 
     }
 
-    public boolean isAttackSuccessful (int opponentDefense) {
-       int modifier =  attackModCalc(opponentDefense);
+    private boolean isAttackSuccessful (int modifier) {
        for (int i = 0; i < modifier; i++) {
            Random random = new Random();
            int x = random.nextInt(6) + 1; // + 1 т.к. целочисленный диапазон [0, 6)
@@ -50,8 +50,40 @@ public abstract class Creature {
        return false;
     }
 
-//    public int Hit () {
-//
-//    }
+    private int hit (boolean isSuccessful) {
+        if (isSuccessful) {
+            // взятие случайного числа из диапазона урона [x, y]
+            int dealtDamage = (int)(( Math.random() * (this.damage[1] - this.damage[0] + 1) + this.damage[0]));
+            return dealtDamage;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public void getHit(int opponentDamage) {
+        this.curentHealth = curentHealth - opponentDamage;
+    }
+
+    public boolean isDead() {
+        return curentHealth == 0;
+    }
+
+    public int attackAlgorithm(Creature opponent) {
+        int modifier = attackModCalc(opponent.getDefense());
+        System.out.println(modifier);
+
+        boolean isSuccessful = isAttackSuccessful(modifier);
+        System.out.println(isSuccessful);
+
+        int dealtDamage = hit(isSuccessful);
+        System.out.println(dealtDamage);
+
+        System.out.println(opponent.getCurentHealth());
+        opponent.getHit(dealtDamage);
+        System.out.println(opponent.getCurentHealth());
+
+        return dealtDamage;
+    }
 
 }

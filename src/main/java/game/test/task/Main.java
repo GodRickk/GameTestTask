@@ -9,7 +9,7 @@ public class Main {
         int[] playerDamage = new int[2];
         playerDamage[0] = 8;
         playerDamage[1] = 11;
-        Player iAm = new Player(3, 4, 31, playerDamage);
+        Player iAm = new Player(3, 4, 32, playerDamage);
         System.out.print("Damage array: ");
 
         // [0, 0] вывод массива наносимого урона
@@ -41,10 +41,25 @@ public class Main {
         monsterDamage[0] = 1;
         monsterDamage[1] = 2;
 
-        Monster garpy = new Monster(1, 1, 10, monsterDamage);
+        Monster garpy = new Monster(1, 1, 16, monsterDamage);
 
-        int testingAttackAlgo = iAm.attackAlgorithm(garpy);
+        int playerAttack = iAm.attackAlgorithm(garpy);
         System.out.print("Dealt to monster playerDamage: ");
-        System.out.println(testingAttackAlgo);
+        System.out.println(playerAttack);
+
+
+        //тест алгоритма исцеления
+        System.out.println("Player's health: ");
+        System.out.println(iAm.getCurentHealth());
+        int monsterAttack = garpy.attackAlgorithm(iAm);
+        System.out.print("Dealt to player monsterDamage: ");
+        System.out.println(monsterAttack);
+
+        System.out.println("Player's health after hit: ");
+        System.out.println(iAm.getCurentHealth());
+        System.out.println("Player's health after Healing: ");
+        iAm.heal();
+        System.out.println(iAm.getCurentHealth());
+
     }
 }

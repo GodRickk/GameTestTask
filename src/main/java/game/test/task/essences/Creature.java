@@ -66,7 +66,7 @@ public abstract class Creature {
     }
 
     public boolean isDead() {
-        return curentHealth == 0;
+        return curentHealth <= 0;
     }
 
     public int attackAlgorithm(Creature opponent) {

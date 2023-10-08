@@ -1,5 +1,7 @@
 package game.test.task.essences;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -8,7 +10,7 @@ public abstract class Creature {
     protected int defense;
     protected int curentHealth;
     protected int maxHealth;
-    protected int[] damage;
+    protected int[] damage = new int[2];
 
     public Creature(int attack, int defense, int maxHealth, int[] damage) {
         this.attack = attack;
@@ -70,18 +72,32 @@ public abstract class Creature {
     }
 
     public int attackAlgorithm(Creature opponent) {
+        int dealtDamage = 0;
+        try {
+        if (opponent == null) {
+            throw new NullPointerException("Your enemy is not exist, who you are going to fight with?");
+        }
+
+        if (opponent == this) {
+            throw new IllegalArgumentException("Wow, self-harm mechanic is not provided, and you are not Tyler Durden");
+        }
+
         int modifier = attackModCalc(opponent.getDefense());
         System.out.println(modifier);
 
         boolean isSuccessful = isAttackSuccessful(modifier);
         System.out.println(isSuccessful);
 
-        int dealtDamage = hit(isSuccessful);
+        dealtDamage = hit(isSuccessful);
         System.out.println(dealtDamage);
 
         System.out.println(opponent.getCurentHealth());
         opponent.getHit(dealtDamage);
         System.out.println(opponent.getCurentHealth());
+
+        } catch (NullPointerException | IllegalArgumentException e) {
+            System.out.println(e);
+        }
 
         return dealtDamage;
     }

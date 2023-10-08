@@ -61,5 +61,11 @@ public class Main {
         iAm.heal();
         System.out.println(iAm.getCurentHealth());
 
+
+        //тест валидации метода атаки
+        iAm.attackAlgorithm(null);
+        System.out.println();
+        iAm.attackAlgorithm(iAm);
+
     }
 }

@@ -40,7 +40,6 @@ public abstract class Creature {
     }
 
     private boolean isAttackSuccessful (int modifier) {
-       //int modifier =  attackModCalc(opponentDefense);
        for (int i = 0; i < modifier; i++) {
            Random random = new Random();
            int x = random.nextInt(6) + 1; // + 1 т.к. целочисленный диапазон [0, 6)
@@ -70,20 +69,8 @@ public abstract class Creature {
         return curentHealth == 0;
     }
 
-//   public int attackAlgorithm(int opponentDefense) {
-//        int modifier = attackModCalc(opponentDefense);
-//        System.out.println(modifier);
-//
-//        boolean isSuccessful = isAttackSuccessful(modifier);
-//        System.out.println(isSuccessful);
-//
-//        int dealtDamage = hit(isSuccessful);
-//        System.out.println(dealtDamage);
-//        return dealtDamage;
-//   }
-
-    public int attackAlgorithm(Creature creature) {
-        int modifier = attackModCalc(creature.getDefense());
+    public int attackAlgorithm(Creature opponent) {
+        int modifier = attackModCalc(opponent.getDefense());
         System.out.println(modifier);
 
         boolean isSuccessful = isAttackSuccessful(modifier);
@@ -91,6 +78,11 @@ public abstract class Creature {
 
         int dealtDamage = hit(isSuccessful);
         System.out.println(dealtDamage);
+
+        System.out.println(opponent.getCurentHealth());
+        opponent.getHit(dealtDamage);
+        System.out.println(opponent.getCurentHealth());
+
         return dealtDamage;
     }
 

@@ -89,7 +89,7 @@ public abstract class Creature {
         }
     }
 
-    public void getHit(int opponentDamage) {
+    private void getHit(int opponentDamage) {
         this.curentHealth = curentHealth - opponentDamage;
     }
 
@@ -133,7 +133,6 @@ public abstract class Creature {
             System.out.println(e);
             //e.printStackTrace();
         }
-
         return dealtDamage;
     }
 

@@ -46,10 +46,12 @@ public class Main {
         int[] invalidDamageLength = new int[5];
         int[] invalidDamageValues = new int[2];
         invalidDamageValues[0] = 2;
-        invalidDamageValues[1] = 0;
+        invalidDamageValues[1] = -3;
 
-        System.out.println("==============================================InvalidMonster DamageLength==============================================");
-        Monster invalidMonster = new Monster(2, 3, -2, invalidDamageValues);
+
+        System.out.println("============================InvalidMonster DamageLength============================");
+        Monster invalidMonster = new Monster(-2, 3, -2, invalidDamageLength);
+
 
         System.out.println("=======================Params========================");
         System.out.println(invalidMonster);
@@ -58,14 +60,14 @@ public class Main {
         System.out.println(invalidMonster.getCurentHealth());
         System.out.println(invalidMonster.getDamage());
 
-        System.out.println("======================InvalidMonster Attack=========================");
+
+        System.out.println("=======================InvalidMonster Attack=======================");
         invalidMonster.attackAlgorithm(iAm);
         System.out.println(iAm.getCurentHealth());
 
+
+        System.out.println("==============================================Game UI==============================================");
         UI uiForPlayer = new UI();
         uiForPlayer.uiBootstrap();
-
-
-
     }
 }

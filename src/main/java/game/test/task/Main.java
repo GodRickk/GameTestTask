@@ -7,8 +7,8 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         int[] playerDamage = new int[2];
-        playerDamage[0] = 8;
-        playerDamage[1] = 11;
+        playerDamage[0] = 11;
+        playerDamage[1] = 8;
         Player iAm = new Player(3, 4, 32, playerDamage);
         System.out.print("Damage array: ");
 
@@ -61,5 +61,29 @@ public class Main {
         iAm.heal();
         System.out.println(iAm.getCurentHealth());
 
+
+        //тест валидации метода атаки
+        iAm.attackAlgorithm(null);
+        System.out.println();
+        iAm.attackAlgorithm(iAm);
+
+        int[] invalidDamageLength = new int[5];
+        int[] invalidDamageValues = new int[2];
+        invalidDamageValues[0] = 2;
+        invalidDamageValues[1] = 0;
+
+        System.out.println("==============================================InvalidMonster DamageLength==============================================");
+        Monster invalidMonster = new Monster(2, 3, -2, invalidDamageValues);
+
+        System.out.println("=======================Params========================");
+        System.out.println(invalidMonster);
+        System.out.println(invalidMonster.getAttack());
+        System.out.println(invalidMonster.getDefense());
+        System.out.println(invalidMonster.getCurentHealth());
+        System.out.println(invalidMonster.getDamage());
+
+        System.out.println("======================InvalidMonster Attack=========================");
+        invalidMonster.attackAlgorithm(iAm);
+        System.out.println(iAm.getCurentHealth());
     }
 }

@@ -1,6 +1,7 @@
 package game.test.task;
 
 import game.test.task.essences.*;
+import game.test.task.services.UI;
 
 import java.util.Arrays;
 
@@ -10,31 +11,6 @@ public class Main {
         playerDamage[0] = 11;
         playerDamage[1] = 8;
         Player iAm = new Player(3, 4, 32, playerDamage);
-        System.out.print("Damage array: ");
-
-        // [0, 0] вывод массива наносимого урона
-        System.out.println(Arrays.toString(iAm.getDamage()));
-        //System.out.print(iAm.getCurentHealth());
-
-
-        // тест метода расчёта модификатора атаки
-        //int modifier = iAm.attackModCalc(2);
-        //System.out.println(modifier);
-
-
-//        // тест успешности броска
-//        boolean isSuccessful = iAm.isAttackSuccessful(2);
-//        System.out.println(isSuccessful);
-//
-//
-//        //тест нанесения урона
-//        System.out.println(iAm.hit(isSuccessful));
-//
-//
-//        //тест получения урона
-//        iAm.getHit(7);
-//        System.out.println(iAm.getCurentHealth());
-
 
         //тест алгоритма атаки
         int[] monsterDamage = new int[2];
@@ -70,10 +46,12 @@ public class Main {
         int[] invalidDamageLength = new int[5];
         int[] invalidDamageValues = new int[2];
         invalidDamageValues[0] = 2;
-        invalidDamageValues[1] = 0;
+        invalidDamageValues[1] = -3;
 
-        System.out.println("==============================================InvalidMonster DamageLength==============================================");
-        Monster invalidMonster = new Monster(2, 3, -2, invalidDamageValues);
+
+        System.out.println("============================InvalidMonster DamageLength============================");
+        Monster invalidMonster = new Monster(-2, 3, -2, invalidDamageLength);
+
 
         System.out.println("=======================Params========================");
         System.out.println(invalidMonster);
@@ -82,8 +60,14 @@ public class Main {
         System.out.println(invalidMonster.getCurentHealth());
         System.out.println(invalidMonster.getDamage());
 
-        System.out.println("======================InvalidMonster Attack=========================");
+
+        System.out.println("=======================InvalidMonster Attack=======================");
         invalidMonster.attackAlgorithm(iAm);
         System.out.println(iAm.getCurentHealth());
+
+
+        System.out.println("==============================================Game UI==============================================");
+        UI uiForPlayer = new UI();
+        uiForPlayer.uiBootstrap();
     }
 }

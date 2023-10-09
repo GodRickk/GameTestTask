@@ -24,7 +24,7 @@ public abstract class Creature {
             }
             this.defense = defense;
 
-            if (maxHealth <=0 ) {
+            if (maxHealth <=0) {
                 throw new IllegalArgumentException("Parameter 'maxHealth' must be from range natural number other than zero when created");
             }
             this.maxHealth = maxHealth;
@@ -42,7 +42,7 @@ public abstract class Creature {
             Arrays.sort(this.damage);
         } catch (IllegalArgumentException e) {
             System.out.println(e);
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
@@ -89,7 +89,7 @@ public abstract class Creature {
         }
     }
 
-    public void getHit(int opponentDamage) {
+    private void getHit(int opponentDamage) {
         this.curentHealth = curentHealth - opponentDamage;
     }
 
@@ -112,23 +112,27 @@ public abstract class Creature {
         }
 
         int modifier = attackModCalc(opponent.getDefense());
+        System.out.print("Attack modifier: ");
         System.out.println(modifier);
 
         boolean isSuccessful = isAttackSuccessful(modifier);
+        System.out.print("Is attack successful: ");
         System.out.println(isSuccessful);
 
         dealtDamage = hit(isSuccessful);
+        System.out.print("Dealt damage: ");
         System.out.println(dealtDamage);
 
+        System.out.print("Opponent health before hit: ");
         System.out.println(opponent.getCurentHealth());
         opponent.getHit(dealtDamage);
+        System.out.print("Opponent health after hit: ");
         System.out.println(opponent.getCurentHealth());
 
         } catch (NullPointerException | IllegalArgumentException e) {
             System.out.println(e);
-            e.printStackTrace();
+            //e.printStackTrace();
         }
-
         return dealtDamage;
     }
 

@@ -24,7 +24,7 @@ public abstract class Creature {
             }
             this.defense = defense;
 
-            if (maxHealth <=0 ) {
+            if (maxHealth <=0) {
                 throw new IllegalArgumentException("Parameter 'maxHealth' must be from range natural number other than zero when created");
             }
             this.maxHealth = maxHealth;
@@ -42,7 +42,7 @@ public abstract class Creature {
             Arrays.sort(this.damage);
         } catch (IllegalArgumentException e) {
             System.out.println(e);
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
@@ -126,7 +126,7 @@ public abstract class Creature {
 
         } catch (NullPointerException | IllegalArgumentException e) {
             System.out.println(e);
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         return dealtDamage;

@@ -1,6 +1,7 @@
 package game.test.task;
 
 import game.test.task.essences.*;
+import game.test.task.services.UI;
 
 import java.util.Arrays;
 
@@ -85,5 +86,11 @@ public class Main {
         System.out.println("======================InvalidMonster Attack=========================");
         invalidMonster.attackAlgorithm(iAm);
         System.out.println(iAm.getCurentHealth());
+
+        UI uiForPlayer = new UI();
+        uiForPlayer.uiBootstrap();
+
+
+
     }
 }

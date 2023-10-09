@@ -1,2 +1,2 @@
 # GameTestTask
-### Telegram username: @God_Rick
+Telegram username: @God_Rick

@@ -18,8 +18,9 @@ public class Fight {
         int monsterTurnCount = 1;
         System.out.println("==================================Fight with monster==================================");
         while (!player.isDead() && !monster.isDead()) {
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             System.out.print("Player's turn: ");
-            System.out.print(playerTurnCount);
+            System.out.println(playerTurnCount);
             playerTurnCount++;
 
             player.attackAlgorithm(monster);
@@ -32,8 +33,9 @@ public class Fight {
                 break;
             }
 
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             System.out.print("Monster's turn: ");
-            System.out.print(monsterTurnCount);
+            System.out.println(monsterTurnCount);
             monsterTurnCount++;
 
             monster.attackAlgorithm(player);

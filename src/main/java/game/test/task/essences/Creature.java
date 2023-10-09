@@ -112,16 +112,21 @@ public abstract class Creature {
         }
 
         int modifier = attackModCalc(opponent.getDefense());
+        System.out.print("Attack modifier: ");
         System.out.println(modifier);
 
         boolean isSuccessful = isAttackSuccessful(modifier);
+        System.out.print("Is attack successful: ");
         System.out.println(isSuccessful);
 
         dealtDamage = hit(isSuccessful);
+        System.out.print("Dealt damage: ");
         System.out.println(dealtDamage);
 
+        System.out.print("Opponent health before hit: ");
         System.out.println(opponent.getCurentHealth());
         opponent.getHit(dealtDamage);
+        System.out.print("Opponent health after hit: ");
         System.out.println(opponent.getCurentHealth());
 
         } catch (NullPointerException | IllegalArgumentException e) {
